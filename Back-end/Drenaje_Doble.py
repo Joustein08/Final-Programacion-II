@@ -18,6 +18,8 @@ categorias = rios["geometry"].plot(figsize = (12,12), alpha=0.5, color = "b")
 rios["Categoria_1"].plot(ax = categorias, color = "r")
 rios["Categoria_2"].plot(ax = categorias, color = "y")
 #rios["Categoria_3"].plot(ax = categorias, color = "g")
+
+
 rios.head(8)
 
 categorias.set_xlim(limites[0],limites[2])
