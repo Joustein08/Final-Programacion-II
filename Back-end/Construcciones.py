@@ -24,3 +24,4 @@ construcciones_unidos["Categoria_3"].plot(ax = categorias, color = "g") # Área 
 # Delimitación gráfica
 categorias.set_xlim(construcciones_unidos.total_bounds[0],construcciones_unidos.total_bounds[2]) # Eje x
 categorias.set_ylim(construcciones_unidos.total_bounds[1],construcciones_unidos.total_bounds[3]) # Eje y
+
