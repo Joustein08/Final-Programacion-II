@@ -26,10 +26,10 @@ app.layout = dbc.Container(
 )
 @app.callback(
     Output('salidaConstrucciones', 'children'),
-    Input('proximidad', 'value')
+    Input('proximidadConstrucciones', 'value')
 )
-def construcciones(proximidad):
-    construcciones_codificada = analisisConstrucciones(proximidad)
+def construcciones(proximidadConstrucciones):
+    construcciones_codificada = analisisConstrucciones(proximidadConstrucciones)
     imagenConstrucciones = html.Img(src="data:image/png;base64,{}".format(construcciones_codificada))
     return html.Div([imagenConstrucciones])
 
