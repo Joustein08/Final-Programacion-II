@@ -5,10 +5,10 @@ definicion_proyecto = dbc.Container(
     [
         html.H2('DEFINICIÓN PROYECTO'),
         html.Hr(),
-        html.Label('¿Al proyecto le afecta la proximidad con construcciones similares'),
+        html.Label('¿Al proyecto le afecta la proximidad con construcciones similares?'),
         dcc.Dropdown(
             id = 'proximidadConstrucciones',
-            options = ['si', 'no'],
+            options = ['SI', 'NO'],
         ),
     ]
 )

@@ -1,13 +1,13 @@
 # Importación de las librerias
 import geopandas as gpd
-import matplotlib as plt
+import matplotlib.pyplot  as plt
 import io
 import base64
 
 def analisisConstrucciones(proximidadConstrucciones):
 
     # Definición de variables
-    if proximidadConstrucciones == "si":
+    if proximidadConstrucciones == "SI":
 
         # Importación información de los construcciones
         construcciones = gpd.read_file("D:/Documentos/Jous/Ing-ud/Materias/2023-1/Programación/Final/Final-Programacion-II/Datos/Construcciones_83IIIB.zip")
@@ -34,8 +34,8 @@ def analisisConstrucciones(proximidadConstrucciones):
 
         # Guardar la figura en un objeto BytesIO
         figuraConstrucciones = io.BytesIO()
-        # plt.savefig(figuraConstrucciones, format='png')
-        # plt.close()
+        plt.savefig(figuraConstrucciones, format='png')
+        plt.close()
 
         # Codificación de la imagen
         construcciones_codificada = base64.b64encode(figuraConstrucciones.getvalue()).decode()
@@ -65,8 +65,8 @@ def analisisConstrucciones(proximidadConstrucciones):
 
         # Guardar la figura en un objeto BytesIO
         figuraConstrucciones = io.BytesIO()
-        # plt.savefig(figuraConstrucciones, format='png')
-        # plt.close()
+        plt.savefig(figuraConstrucciones, format='png')
+        plt.close()
 
         # Codificación de la imagen
         construcciones_codificada = base64.b64encode(figuraConstrucciones.getvalue()).decode() 
