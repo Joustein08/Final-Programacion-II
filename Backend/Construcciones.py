@@ -10,7 +10,7 @@ def analisisConstrucciones(proximidadConstrucciones):
     if proximidadConstrucciones == "SI":
 
         # Importación información de los construcciones
-        construcciones = gpd.read_file("D:/Documentos/Jous/Ing-ud/Materias/2023-1/Programación/Final/Final-Programacion-II/Datos/Construcciones_83IIIB.zip")
+        construcciones = gpd.read_file("C:/Users/ESTUDIANTES/Desktop/pagina/Final-Programacion-II/Datos/Construcciones_83IIIB.zip")
 
         #Creación de columnas en el geodataframe para el análisis
         construcciones["PROCESO"]="UNION" # Creación de columna proceso para realizar la union de los elementos del archivo shp
@@ -23,7 +23,7 @@ def analisisConstrucciones(proximidadConstrucciones):
         construcciones_unidos["Categoria_3"] = (construcciones_unidos["buffer3"]-construcciones_unidos["Categoria_2"]-construcciones_unidos["Categoria_1"]-construcciones_unidos["geometry"]) # Delimitación tercera zona
 
         # Gráfica
-        categorias = construcciones_unidos["geometry"].plot(figsize = (12,12), alpha=0.5, color = "b") # Área del rio
+        categorias = construcciones_unidos["geometry"].plot(figsize = (6,6), alpha=0.5, color = "b") # Área del rio
         construcciones_unidos["Categoria_1"].plot(ax = categorias, color = "r") # Área de la primera categoria
         construcciones_unidos["Categoria_2"].plot(ax = categorias, color = "y") # Área de la segunda categoria
         construcciones_unidos["Categoria_3"].plot(ax = categorias, color = "g") # Área de la tercera categoria
@@ -41,7 +41,7 @@ def analisisConstrucciones(proximidadConstrucciones):
         construcciones_codificada = base64.b64encode(figuraConstrucciones.getvalue()).decode()
     else: 
         # Importación información de los construcciones
-        construcciones = gpd.read_file("D:/Documentos/Jous/Ing-ud/Materias/2023-1/Programación/Final/Final-Programacion-II/Datos/Construcciones_83IIIB.zip")
+        construcciones = gpd.read_file("C:/Users/ESTUDIANTES/Desktop/pagina/Final-Programacion-II/Datos/Construcciones_83IIIB.zip")
 
         #Creación de columnas en el geodataframe para el análisis
         construcciones["PROCESO"]="UNION" # Creación de columna proceso para realizar la union de los elementos del archivo shp
@@ -54,7 +54,7 @@ def analisisConstrucciones(proximidadConstrucciones):
         construcciones_unidos["Categoria_3"] = (construcciones_unidos["buffer3"]-construcciones_unidos["Categoria_2"]-construcciones_unidos["Categoria_1"]-construcciones_unidos["geometry"]) # Delimitación tercera zona
 
         # Gráfica
-        categorias = construcciones_unidos["geometry"].plot(figsize = (12,12), alpha=0.5, color = "b") # Área del rio
+        categorias = construcciones_unidos["geometry"].plot(figsize = (6,6), alpha=0.5, color = "b") # Área del rio
         construcciones_unidos["Categoria_1"].plot(ax = categorias, color = "g") # Área de la primera categoria
         construcciones_unidos["Categoria_2"].plot(ax = categorias, color = "y") # Área de la segunda categoria
         construcciones_unidos["Categoria_3"].plot(ax = categorias, color = "r") # Área de la tercera categoria
