@@ -10,6 +10,7 @@ from fronted.izquierda.izquierda import izquierda
 
 #IMPORTAR BACKEND
 from Backend.Construcciones import *
+from Backend.Drenaje_Doble import *
 
 app = dash.Dash(__name__,external_stylesheets=[dbc.themes.BOOTSTRAP])
 
@@ -32,6 +33,17 @@ def construcciones(proximidadConstrucciones):
     construcciones_codificada = analisisConstrucciones(proximidadConstrucciones)
     imagenConstrucciones = html.Img(src="data:image/png;base64,{}".format(construcciones_codificada))
     return html.Div([imagenConstrucciones])
+
+@app.callback(
+    Output('salidaRios', 'children'),
+    Input('proximidadRios', 'value')
+)
+def analisisRios(proximidadRios):
+    rios_codificada = analisisRios(proximidadRios)
+    imagenRios = html.Img(src="data:image/png;base64,{}".format(rios_codificada))
+    return html.Div([imagenRios])
+
+
 
 if __name__ == '__main__':
     app.run_server(debug=True) 

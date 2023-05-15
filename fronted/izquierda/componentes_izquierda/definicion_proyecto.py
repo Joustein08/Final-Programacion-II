@@ -10,5 +10,10 @@ definicion_proyecto = dbc.Container(
             id = 'proximidadConstrucciones',
             options = ['SI', 'NO'],
         ),
+        html.Label('¿Al proyecto le afecta la proximidad con drenajes, rios o cuerpos de agua?'),
+        dcc.Dropdown(
+            id = 'proximidadRios',
+            options = ['SI', 'NO'],
+        ),
     ]
 )
