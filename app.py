@@ -38,11 +38,10 @@ def construcciones(proximidadConstrucciones):
     Output('salidaRios', 'children'),
     Input('proximidadRios', 'value')
 )
-def analisisRios(proximidadRios):
+def Rios(proximidadRios):
     rios_codificada = analisisRios(proximidadRios)
     imagenRios = html.Img(src="data:image/png;base64,{}".format(rios_codificada))
     return html.Div([imagenRios])
-
 
 
 if __name__ == '__main__':
