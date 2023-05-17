@@ -5,7 +5,7 @@ import io
 import base64
 
 # Importación información de los rios
-rios = gpd.read_file("D:/Documentos/Jous/Ing-ud/Materias/2023-1/Programación/Final/Final-Programacion-II/Datos/Drenaje_doble_83IIIB.zip")
+rios = gpd.read_file("Datos\Drenaje_doble_83IIIB.zip")
 
 #Creación de columnas en el geodataframe para el análisis
 rios["PROCESO"]="UNION" # Creación de columna proceso para realizar la union de los elementos del archivo shp
@@ -38,6 +38,7 @@ def analisisRios(proximidadRios):
         plt.close()
         # Codificación de la imagen
         rios_codificada = base64.b64encode(figuraRios.getvalue()).decode()
+    
     elif proximidadRios == "NO": 
 
         # Gráfica
