@@ -53,4 +53,5 @@ analisis_resultados_capa = dbc.Container(
             style={'width': '100%'} #Hace que la tabla ocupe todo el ancho del container
         )        
     ]
+    
 )
