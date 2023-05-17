@@ -11,6 +11,7 @@ from fronted.izquierda.izquierda import izquierda
 #IMPORTAR BACKEND
 from Backend.Construcciones import *
 from Backend.Drenaje_Doble import *
+from Backend.Poblacion import *
 
 app = dash.Dash(__name__,external_stylesheets=[dbc.themes.BOOTSTRAP])
 
@@ -46,10 +47,20 @@ def Rios(proximidadRios):
     return html.Div([imagenRios])
 
 @app.callback(
+    Output('salidaPoblacion', 'children'),
+    Input('proximidadPoblacion', 'value')
+)
+
+def Poblacion(proximidadPoblacion):
+    poblacion_codificada = analisisPoblacion(proximidadPoblacion)
+    imagenPoblacion = html.Img(src="data:image/png;base64,{}".format(poblacion_codificada))
+    return html.Div([imagenPoblacion])
+
+@app.callback(
     Output('tabla', 'children'),
     Input('proximidadConstrucciones', 'value'),
     Input('proximidadRios', 'value'),
-    Input('proximidadPoblación', 'value'),
+    Input('proximidadPoblacion', 'value'),
     Input('proximidadVias', 'value')
 )
 def update_table(proximidad_construcciones, proximidad_rios, proximidad_poblacion, proximidad_vias):
