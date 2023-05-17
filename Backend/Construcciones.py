@@ -7,7 +7,7 @@ import base64
 def analisisConstrucciones(proximidadConstrucciones):
 
     # Importación información de los construcciones
-    construcciones = gpd.read_file("D:/Documentos/Jous/Ing-ud/Materias/2023-1/Programación/Final/Final-Programacion-II/Datos/Construcciones_83IIIB.zip")
+    construcciones = gpd.read_file("Datos\Construcciones_83IIIB.zip")
 
     #Creación de columnas en el geodataframe para el análisis
     construcciones["PROCESO"]="UNION" # Creación de columna proceso para realizar la union de los elementos del archivo shp
@@ -39,6 +39,7 @@ def analisisConstrucciones(proximidadConstrucciones):
 
         # Codificación de la imagen
         construcciones_codificada = base64.b64encode(figuraConstrucciones.getvalue()).decode()
+    
     elif proximidadConstrucciones == "NO": 
         
         # Gráfica
