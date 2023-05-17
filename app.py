@@ -25,6 +25,7 @@ app.layout = dbc.Container(
         )
     ]
 )
+
 @app.callback(
     Output('salidaConstrucciones', 'children'),
     Input('proximidadConstrucciones', 'value')
@@ -38,11 +39,11 @@ def construcciones(proximidadConstrucciones):
     Output('salidaRios', 'children'),
     Input('proximidadRios', 'value')
 )
+
 def Rios(proximidadRios):
     rios_codificada = analisisRios(proximidadRios)
     imagenRios = html.Img(src="data:image/png;base64,{}".format(rios_codificada))
     return html.Div([imagenRios])
-
 
 if __name__ == '__main__':
     app.run_server(debug=True) 
