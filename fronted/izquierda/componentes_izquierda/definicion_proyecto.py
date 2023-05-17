@@ -25,7 +25,7 @@ definicion_proyecto = dbc.Container(
         html.Br(),
         html.Label('¿Al proyecto le afecta la proximidad con centros poblados?'),
         dcc.Dropdown(
-            id='proximidadPoblación',
+            id='proximidadPoblacion',
             options=[
                 {'label': 'SI', 'value': 'SI'},
                 {'label': 'NO', 'value': 'NO'}
