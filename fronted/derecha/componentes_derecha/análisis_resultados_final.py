@@ -9,6 +9,10 @@ analisis_resultados_final = dbc.Container(
         html.Hr(),
         html.Label('Análisis de construcciones similares'),
         html.Hr(),
-        html.Div(id = 'salidaConstrucciones')
+        html.Div(id = 'salidaConstrucciones'),
+        html.Hr(),
+        html.Label('Análisis de cuerpos de agua'),
+        html.Hr(),
+        html.Div(id = 'salidaRios'),
     ]
 )
