@@ -45,8 +45,6 @@ def Rios(proximidadRios):
     imagenRios = html.Img(src="data:image/png;base64,{}".format(rios_codificada))
     return html.Div([imagenRios])
 
-<<<<<<< HEAD
-=======
 @app.callback(
     Output('tabla', 'children'),
     Input('proximidadConstrucciones', 'value'),
@@ -71,6 +69,5 @@ def update_table(proximidad_construcciones, proximidad_rios, proximidad_poblacio
 
     return html.Table(filas)
 
->>>>>>> a78fab1a5020770c626e5cfa67e16dc08d01dbb6
 if __name__ == '__main__':
     app.run_server(debug=True) 
