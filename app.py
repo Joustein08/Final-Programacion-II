@@ -2,6 +2,9 @@ import dash
 from dash import html
 import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output, State
+from werkzeug.serving import make_server
+import threading
+import signal
 
 #IMPORTAR FRONTED
 from fronted.navegador.navegador import navegador
@@ -53,8 +56,8 @@ def Rios(proximidadRios):
 )
 
 def Poblacion(proximidadPoblacion):
-    poblacion_codificada = analisisPoblacion(proximidadPoblacion)
-    imagenPoblacion = html.Img(src="data:image/png;base64,{}".format(poblacion_codificada))
+    Poblacion_codificada = analisisPoblacion(proximidadPoblacion)
+    imagenPoblacion = html.Img(src="data:image/png;base64,{}".format(Poblacion_codificada))
     return html.Div([imagenPoblacion])
 
 @app.callback(
@@ -106,5 +109,5 @@ def mostrar_salidas(n_clicks, proximidad_construcciones, proximidad_rios, proxim
     return html.Div()
 
 if __name__ == '__main__':
-    app.server.config['TIMEOUT'] = 180
+    app.server.config['TIMEOUT'] = 60
     app.run_server(debug=True) 
