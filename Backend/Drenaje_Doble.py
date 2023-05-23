@@ -10,11 +10,10 @@ import io
 import base64
 
 # Ruta al archivo shapefile y a los archivos de salida raster
-shapefile_path = 'Datos/Construccion_P.shp'
-raster1_path = 'raster/RiosproximidadRios_1.tiff'
-raster2_path  = 'raster/RiosproximidadRios_2.tiff'
-output_path = 'raster/RiosproximidadRios_3.tiff'
-image_save_path = 'raster/RiosproximidadRios.png'
+shapefile_path = 'Datos/Drenaje_Doble.shp'
+raster1_path = 'raster/Rios_1.tiff'
+raster2_path  = 'raster/Rios_2.tiff'
+output_path = 'raster/Rios_3.tiff'
 
 # Leer el archivo shapefile con GeoPandas
 gdf = gpd.read_file(shapefile_path)
