@@ -14,7 +14,6 @@ shapefile_path = 'Datos/Construccion_P.shp'
 raster1_path = 'raster/construcciones_1.tiff'
 raster2_path  = 'raster/construcciones_2.tiff'
 output_path = 'raster/construcciones_3.tiff'
-image_save_path = 'raster/Construcciones.png'
 
 # Leer el archivo shapefile con GeoPandas
 gdf = gpd.read_file(shapefile_path)
