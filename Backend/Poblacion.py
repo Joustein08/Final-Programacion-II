@@ -1,6 +1,6 @@
 # Importación de las librerias
 import geopandas as gpd
-import matplotlib as plt
+import matplotlib.pyplot as plt
 import io
 import base64
 
