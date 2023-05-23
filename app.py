@@ -1,7 +1,7 @@
 import dash
 from dash import html
 import dash_bootstrap_components as dbc
-from dash.dependencies import Input, Output
+from dash.dependencies import Input, Output, State
 
 #IMPORTAR FRONTED
 from fronted.navegador.navegador import navegador
@@ -79,6 +79,31 @@ def update_table(proximidad_construcciones, proximidad_rios, proximidad_poblacio
         ])
     ]
     return html.Table(filas)
+@app.callback(
+    Output("salidas", "children"),
+    Input("boton-mostrar-salidas", "n_clicks"),
+    State('proximidadConstrucciones', 'value'),
+    State('proximidadRios', 'value'),
+    State('proximidadPoblacion', 'value')
+)
+def mostrar_salidas(n_clicks, proximidad_construcciones, proximidad_rios, proximidad_poblacion):
+    if n_clicks:
+        salida_construcciones = construcciones(proximidad_construcciones)
+        salida_rios = Rios(proximidad_rios)
+        salida_poblacion = Poblacion(proximidad_poblacion)
+        return html.Div([html.Hr(),
+                         html.Label('Análisis de construcciones similares'),
+                         html.Hr(),
+                         salida_construcciones,
+                         html.Hr(),
+                         html.Label('Análisis de cuerpos de agua'),
+                         html.Hr(),
+                         salida_rios,
+                         html.Hr(),
+                         html.Label('Análisis de cercanía de población'),
+                         html.Hr(),
+                         salida_poblacion])
+    return html.Div()
 
 if __name__ == '__main__':
     app.server.config['TIMEOUT'] = 180
