@@ -15,12 +15,6 @@ convenciones = dbc.Container(
                     html.Td('REGULAR', style={'background-color': 'yellow', 'fontWeight': 'bold'}),
                     html.Td('BUENO', style={'background-color': 'green', 'fontWeight': 'bold'}),
                 ]),
-                html.Tr([
-                    # Creacion celdas segunda fila de la tabla
-                    html.Td('MALO', style={'background-color': '#FFA0A0', 'fontWeight': 'bold'}),
-                    html.Td('REGULAR', style={'background-color': '#FFFFA0', 'fontWeight': 'bold'}),
-                    html.Td('BUENO', style={'background-color': '#A0FFA0', 'fontWeight': 'bold'}),
-                ])
             ],
             style={'width': '100%'} #Hace que la tabla ocupe todo el ancho del container
         )
