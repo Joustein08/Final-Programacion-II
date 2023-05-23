@@ -15,6 +15,7 @@ from fronted.izquierda.izquierda import izquierda
 from Backend.Construcciones import *
 from Backend.Drenaje_Doble import *
 from Backend.Poblacion import *
+from Backend.Vias import *
 
 app = dash.Dash(__name__,external_stylesheets=[dbc.themes.BOOTSTRAP])
 
@@ -61,6 +62,16 @@ def Poblacion(proximidadPoblacion):
     return html.Div([imagenPoblacion])
 
 @app.callback(
+    Output('salidaVias', 'children'),
+    Input('proximidadVias', 'value')
+)
+
+def Vias(proximidadVias):
+    Vias_codificada = analisisVias(proximidadVias)
+    imagenVias = html.Img(src="data:image/png;base64,{}".format(Vias_codificada))
+    return html.Div([imagenVias])
+
+@app.callback(
     Output('tabla', 'children'),
     Input('proximidadConstrucciones', 'value'),
     Input('proximidadRios', 'value'),
@@ -87,13 +98,15 @@ def update_table(proximidad_construcciones, proximidad_rios, proximidad_poblacio
     Input("boton-mostrar-salidas", "n_clicks"),
     State('proximidadConstrucciones', 'value'),
     State('proximidadRios', 'value'),
-    State('proximidadPoblacion', 'value')
+    State('proximidadPoblacion', 'value'),
+    State('proximidadVias', 'value')
 )
-def mostrar_salidas(n_clicks, proximidad_construcciones, proximidad_rios, proximidad_poblacion):
+def mostrar_salidas(n_clicks, proximidad_construcciones, proximidad_rios, proximidad_poblacion,proximidad_Vias):
     if n_clicks:
         salida_construcciones = construcciones(proximidad_construcciones)
         salida_rios = Rios(proximidad_rios)
         salida_poblacion = Poblacion(proximidad_poblacion)
+        salida_vias = Vias(proximidad_Vias)
         return html.Div([html.Hr(),
                          html.Label('Análisis de construcciones similares'),
                          html.Hr(),
@@ -105,7 +118,11 @@ def mostrar_salidas(n_clicks, proximidad_construcciones, proximidad_rios, proxim
                          html.Hr(),
                          html.Label('Análisis de cercanía de población'),
                          html.Hr(),
-                         salida_poblacion])
+                         salida_poblacion,
+                         html.Hr(),
+                         html.Label('Análisis de cercanía de población'),
+                         html.Hr(),
+                         salida_vias])
     return html.Div()
 
 if __name__ == '__main__':
