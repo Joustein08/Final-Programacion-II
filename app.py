@@ -27,6 +27,7 @@ app.layout = dbc.Container(
     ]
 )
 
+
 @app.callback(
     Output('salidaConstrucciones', 'children'),
     Input('proximidadConstrucciones', 'value')
@@ -77,8 +78,8 @@ def update_table(proximidad_construcciones, proximidad_rios, proximidad_poblacio
             html.Td('__RED VIAL_', style=estilo_vias if proximidad_vias == 'SI' else {}),
         ])
     ]
-
     return html.Table(filas)
 
 if __name__ == '__main__':
+    app.server.config['TIMEOUT'] = 180
     app.run_server(debug=True) 
