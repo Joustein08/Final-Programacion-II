@@ -2,6 +2,8 @@ from dash import html
 from dash import dcc
 import dash_bootstrap_components as dbc
 
+datos = ['Centros Poblados', 'Construcciones similares', 'Fuentes Hídricas', 'Vías de acceso']
+acepta_archivos = '.shp,.tif'
 
 #Creación container para la parte izquierda.
 datos_a_analizar = dbc.Container(
@@ -26,8 +28,8 @@ datos_a_analizar = dbc.Container(
                 'textAlign': 'center',
                 'margin': '10px'
              },
-             # Acepta archivos .zip
-             accept='.zip'
+             # Acepta archivos shp y raster
+             accept='.shp,.tif'
          ),
         html.Hr(),
         html.Label('Construcciones similares'),
@@ -47,8 +49,8 @@ datos_a_analizar = dbc.Container(
                 'textAlign': 'center',
                 'margin': '10px'
              },
-             # Acepta archivos .zip
-             accept='.zip'
+             # Acepta archivos shp y raster
+             accept='.shp,.tif'
          ),
         html.Hr(),
         html.Label('Fuentes Hídricas'),
@@ -68,8 +70,8 @@ datos_a_analizar = dbc.Container(
                 'textAlign': 'center',
                 'margin': '10px'
              },
-             # Acepta archivos .zip
-             accept='.zip'
+             # Acepta archivos shp y raster
+             accept='.shp,.tif'
          ),
         html.Hr(),
         html.Label('Vías de acceso'),
@@ -89,8 +91,8 @@ datos_a_analizar = dbc.Container(
                 'textAlign': 'center',
                 'margin': '10px'
              },
-             # Acepta archivos .zip
-             accept='.zip'
+             # Acepta archivos shp y raster
+             accept='.shp,.tif'
          ),
         html.Hr(),
     ]
