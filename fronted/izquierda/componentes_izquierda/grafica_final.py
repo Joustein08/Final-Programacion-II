@@ -5,7 +5,7 @@ grafica_final = dbc.Container(
     [
         html.H2('GRÁFICA FINAL'),
         html.Br(),
-        dbc.Button("Mostrar Análisis final", id="boton-mostrar-salidas", color="dark", className=""),
+        dbc.Button("Mostrar Análisis final", id="boton-mostrar-final", color="dark", className=""),
         html.Div(id="salidaGraficaFinal"),
     ]
 )
