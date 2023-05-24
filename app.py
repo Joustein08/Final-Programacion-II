@@ -124,19 +124,19 @@ def mostrar_salidas(n_clicks, proximidad_construcciones, proximidad_rios, proxim
         salida_poblacion = Poblacion(proximidad_poblacion)
         salida_vias = Vias(proximidad_Vias)
         return html.Div([html.Hr(),
-                         html.Label('Análisis de construcciones similares'),
+                         html.Label('ANÁLISIS DE CONSTRUCCIONES SIMILARES'),
                          html.Hr(),
                          salida_construcciones,
                          html.Hr(),
-                         html.Label('Análisis de cuerpos de agua'),
+                         html.Label('ANÁLISIS DE FUENTES HÍDRICAS'),
                          html.Hr(),
                          salida_rios,
                          html.Hr(),
-                         html.Label('Análisis de cercanía de población'),
+                         html.Label('ANAÁLISIS DE CENTROS POBLADOS'),
                          html.Hr(),
                          salida_poblacion,
                          html.Hr(),
-                         html.Label('Análisis de cercanía de población'),
+                         html.Label('ANALISIS DE RED VIAL'),
                          html.Hr(),
                          salida_vias])
     return html.Div()
