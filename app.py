@@ -13,6 +13,7 @@ from Backend.Construcciones import *
 from Backend.Drenaje_Doble import *
 from Backend.Poblacion import *
 from Backend.Vias import *
+from Backend.Final import Final_codificada
 
 app = dash.Dash(__name__,external_stylesheets=[dbc.themes.BOOTSTRAP])
 
@@ -122,6 +123,27 @@ def mostrar_salidas(n_clicks, proximidad_construcciones, proximidad_rios, proxim
                          salida_vias])
     return html.Div()
 
+@app.callback(
+    Output('salidaFinal', 'children'),
+    Input('proximidadVias', 'value')
+)
+
+def Final():
+    imagenFinal = html.Img(src="data:image/png;base64,{}".format(Final_codificada))
+    return html.Div([imagenFinal])
+
+@app.callback(
+    Output("salidaGraficaFinal", "children"),
+    Input("boton-mostrar-final", "n_clicks")
+)
+def mostrar_salidas(n_clicks):
+    if n_clicks:
+        salida_final= Final()
+        return html.Div([html.Hr(),
+                         salida_final,
+                         html.Hr(),])
+    return html.Div()
+
 if __name__ == '__main__':
-    app.server.config['TIMEOUT'] = 60
+    app.server.config['TIMEOUT'] = 180
     app.run_server(debug=True) 
