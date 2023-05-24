@@ -136,7 +136,7 @@ def Final():
     Output("salidaGraficaFinal", "children"),
     Input("boton-mostrar-final", "n_clicks")
 )
-def mostrar_salidas(n_clicks):
+def mostrar_final(n_clicks):
     if n_clicks:
         salida_final= Final()
         return html.Div([html.Hr(),
