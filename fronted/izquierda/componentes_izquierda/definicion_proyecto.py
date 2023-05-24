@@ -39,7 +39,6 @@ definicion_proyecto = dbc.Container(
                 {'label': 'SI', 'value': 'SI'},
                 {'label': 'NO', 'value': 'NO'}
             ],
-        
         ),
         html.Br(),
         html.Table(id='tabla'),
