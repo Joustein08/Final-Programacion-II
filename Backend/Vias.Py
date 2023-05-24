@@ -19,12 +19,12 @@ output_path = 'raster/Vias_3.tiff'
 gdf = gpd.read_file(shapefile_path)
 
 # Realizar un buffer de 500 unidades espaciales para la primera zona
-buffer_distance_1 = 500
+buffer_distance_1 = 200
 buffered_gdf_1 = gdf.copy()
 buffered_gdf_1['geometry'] = buffered_gdf_1.buffer(buffer_distance_1)
 
 # Realizar un buffer de 1000 unidades espaciales
-buffer_distance_2 = 1000
+buffer_distance_2 = 400
 buffered_gdf_2 = gdf.copy()
 buffered_gdf_2['geometry'] = buffered_gdf_2.buffer(buffer_distance_2)
 
