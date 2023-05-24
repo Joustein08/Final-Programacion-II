@@ -8,12 +8,14 @@ from dash.dependencies import Input, Output, State
 from fronted.navegador.navegador import navegador
 from fronted.derecha.derecha import derecha
 from fronted.izquierda.izquierda import izquierda
+from fronted.izquierda.componentes_izquierda.análisis_resultados_capa import asignar_color_porcentaje
 
 #IMPORTAR BACKEND
 from Backend.Construcciones import *
 from Backend.Drenaje_Doble import *
 from Backend.Poblacion import *
 from Backend.Vias import *
+from Backend.Final import porcentaje_influencia1, porcentaje_influencia2, porcentaje_influencia3, porcentaje_influencia4
 from Backend.Final import Final_codificada
 
 # Creación de la aplicación Dash
@@ -168,6 +170,53 @@ def mostrar_final(n_clicks):
                          html.Hr(),])
     return html.Div()
 
+
+# Callback para mostrar la tabla de resultados_capa
+@app.callback(
+    Output('tabla-container', 'children'),
+    [Input('boton-generar-tabla', 'n_clicks')]
+)
+
+# Definición del funcionamiento del botón para mostrar la tabla de resultados_capa
+def generar_tabla(n_clicks):
+    if n_clicks > 0:
+        return dbc.Table(
+            [
+                html.Tr([
+                    html.Td('CAPA', style={'background-color': 'black', 'fontWeight': 'bold', 'color': 'white', 'border': '1px solid white'}),
+                    html.Td('FACTIBILIDAD', style={'background-color': 'black', 'fontWeight': 'bold', 'color': 'white', 'border': '1px solid white'}),
+                ]),
+                html.Tr([
+                    html.Td('CONSTRUCCIONES SIMILARES', style={'background-color': 'white', 'fontWeight': 'bold', 'border': '1px solid black'}),
+                    html.Td([
+                        html.Div(style={'width': f'{round(porcentaje_influencia2, 2)}%', 'background-color': asignar_color_porcentaje(porcentaje_influencia2), 'height': '20px'}),
+                        html.Span(f'{round(porcentaje_influencia2, 2)}%')
+                    ]),
+                ]),
+                html.Tr([
+                    html.Td('FUENTES HÍDRICAS', style={'background-color': 'white', 'fontWeight': 'bold', 'border': '1px solid black'}),
+                    html.Td([
+                        html.Div(style={'width': f'{round(porcentaje_influencia4, 2)}%', 'background-color': asignar_color_porcentaje(porcentaje_influencia4), 'height': '20px'}),
+                        html.Span(f'{round(porcentaje_influencia4, 2)}%')
+                    ]),
+                ]),
+                html.Tr([
+                    html.Td('CENTROS POBLADOS', style={'background-color': 'white', 'fontWeight': 'bold', 'border': '1px solid black'}),
+                    html.Td([
+                        html.Div(style={'width': f'{round(porcentaje_influencia3, 2)}%', 'background-color': asignar_color_porcentaje(porcentaje_influencia3), 'height': '20px'}),
+                        html.Span(f'{round(porcentaje_influencia3, 2)}%')
+                    ]),
+                ]),
+                html.Tr([
+                    html.Td('RED VIAL', style={'background-color': 'white', 'fontWeight': 'bold', 'border': '1px solid black'}),
+                    html.Td([
+                        html.Div(style={'width': f'{round(porcentaje_influencia1, 2)}%', 'background-color': asignar_color_porcentaje(porcentaje_influencia1), 'height': '20px'}),
+                        html.Span(f'{round(porcentaje_influencia1, 2)}%')
+                    ]),
+                ]),
+            ],
+            style={'width': '100%'}
+        )
 
 # Iniciar el servidor Dash
 if __name__ == '__main__':
