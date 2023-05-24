@@ -1,5 +1,17 @@
 from dash import html
 import dash_bootstrap_components as dbc
+from Backend.Final import porcentaje_influencia1
+from Backend.Final import porcentaje_influencia2
+from Backend.Final import porcentaje_influencia3
+from Backend.Final import porcentaje_influencia4
+
+def asignar_color_porcentaje(porcentaje):
+    if porcentaje <= 30:
+        return '#FF0000'  # Rojo
+    elif porcentaje <= 50:
+        return '#FFFF00'  # Amarillo
+    else:
+        return '#00FF00'  # Verde
 
 
 analisis_resultados_capa = dbc.Container(
@@ -15,29 +27,29 @@ analisis_resultados_capa = dbc.Container(
         html.Tr([
             html.Td('CONSTRUCCIONES SIMILARES', style={'background-color': 'white', 'fontWeight': 'bold', 'border': '1px solid black'}),
             html.Td([
-                html.Div(style={'width': f'{10}%', 'background-color': '#A0FFA0', 'height': '20px'}),
-                html.Span(f'{10}%')
+                html.Div(style={'width': f'{round(porcentaje_influencia2, 2)}%', 'background-color': asignar_color_porcentaje(porcentaje_influencia2), 'height': '20px'}),
+                html.Span(f'{round(porcentaje_influencia2, 2)}%')
             ]),
         ]),
         html.Tr([
             html.Td('FUENTES HÍDRICAS', style={'background-color': 'white', 'fontWeight': 'bold', 'border': '1px solid black'}),
             html.Td([
-                html.Div(style={'width': f'{30}%', 'background-color': '#A0FFA0', 'height': '20px'}),
-                html.Span(f'{30}%')
+                html.Div(style={'width': f'{round(porcentaje_influencia4, 2)}%', 'background-color': asignar_color_porcentaje(porcentaje_influencia4), 'height': '20px'}),
+                html.Span(f'{round(porcentaje_influencia4, 2)}%')
             ]),
         ]),
         html.Tr([
             html.Td('CENTROS POBLADOS', style={'background-color': 'white', 'fontWeight': 'bold', 'border': '1px solid black'}),
             html.Td([
-                html.Div(style={'width': f'{70}%', 'background-color': '#A0FFA0', 'height': '20px'}),
-                html.Span(f'{70}%')
+                html.Div(style={'width': f'{round(porcentaje_influencia3, 2)}%', 'background-color': asignar_color_porcentaje(porcentaje_influencia3), 'height': '20px'}),
+                html.Span(f'{round(porcentaje_influencia3, 2)}%')
             ]),
         ]),
         html.Tr([
             html.Td('RED VIAL', style={'background-color': 'white', 'fontWeight': 'bold', 'border': '1px solid black'}),
             html.Td([
-                html.Div(style={'width': f'{85}%', 'background-color': '#A0FFA0', 'height': '20px'}),
-                html.Span(f'{85}%')
+                html.Div(style={'width': f'{round(porcentaje_influencia1, 2)}%', 'background-color': asignar_color_porcentaje(porcentaje_influencia1), 'height': '20px'}),
+                html.Span(f'{round(porcentaje_influencia1, 2)}%')
             ]),
         ]),       
     ],

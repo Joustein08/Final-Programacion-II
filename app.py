@@ -132,11 +132,11 @@ def mostrar_salidas(n_clicks, proximidad_construcciones, proximidad_rios, proxim
                          html.Hr(),
                          salida_rios,
                          html.Hr(),
-                         html.Label('ANAÁLISIS DE CENTROS POBLADOS'),
+                         html.Label('ANÁLISIS DE CENTROS POBLADOS'),
                          html.Hr(),
                          salida_poblacion,
                          html.Hr(),
-                         html.Label('ANALISIS DE RED VIAL'),
+                         html.Label('ANÁLISIS DE RED VIAL'),
                          html.Hr(),
                          salida_vias])
     return html.Div()

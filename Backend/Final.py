@@ -88,3 +88,26 @@ plt.close()
 
 # Codificación de la imagen
 Final_codificada = base64.b64encode(figuraFinal.getvalue()).decode()
+
+# Calcular el histograma y porcentaje de influencia de cada raster
+histograma1, bordes1 = np.histogram(raster1.flatten(), bins=256, range=[0, 255])
+indice_color_predominante1 = np.argmax(histograma1)
+porcentaje_influencia1 = (histograma1[indice_color_predominante1] / np.sum(histograma1)) * 100
+
+histograma2, bordes2 = np.histogram(raster2.flatten(), bins=256, range=[0, 255])
+indice_color_predominante2 = np.argmax(histograma2)
+porcentaje_influencia2 = (histograma2[indice_color_predominante2] / np.sum(histograma2)) * 100
+
+histograma3, bordes3 = np.histogram(raster3.flatten(), bins=256, range=[0, 255])
+indice_color_predominante3 = np.argmax(histograma3)
+porcentaje_influencia3 = (histograma3[indice_color_predominante3] / np.sum(histograma3)) * 100
+
+histograma4, bordes4 = np.histogram(raster4.flatten(), bins=256, range=[0, 255])
+indice_color_predominante4 = np.argmax(histograma4)
+porcentaje_influencia4 = (histograma4[indice_color_predominante4] / np.sum(histograma4)) * 100
+
+# Imprimir los porcentajes de influencia de cada archivo raster
+print("Porcentaje de influencia de raster1: {:.0f}%".format(porcentaje_influencia1))
+print(f"Porcentaje de influencia de raster2: {porcentaje_influencia2:.0f}%")
+print(f"Porcentaje de influencia de raster3: {porcentaje_influencia3:.0f}%")
+print(f"Porcentaje de influencia de raster4: {porcentaje_influencia4:.0f}%")
