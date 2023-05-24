@@ -2,8 +2,6 @@ from dash import html
 from dash import dcc
 import dash_bootstrap_components as dbc
 
-datos = ['Centros Poblados', 'Construcciones similares', 'Fuentes Hídricas', 'Vías de acceso']
-acepta_archivos = '.shp,.tif'
 
 #Creación container para la parte izquierda.
 datos_a_analizar = dbc.Container(
@@ -97,3 +95,4 @@ datos_a_analizar = dbc.Container(
         html.Hr(),
     ]
 )
+
