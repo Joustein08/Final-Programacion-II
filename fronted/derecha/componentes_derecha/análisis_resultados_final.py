@@ -8,7 +8,7 @@ analisis_resultados_final = dbc.Container(
          html.H5('Según el análisis generado por el software se especifica:'),
          html.Hr(),
          html.Br(),
-         dbc.Button("Mostrar Salidas", id="boton-mostrar-salidas", color="primary", className="mr-2"),
+         dbc.Button("Mostrar Salidas", id="boton-mostrar-salidas", color="dark", className=""),
          html.Div(id="salidas"),
         #  html.Label('Análisis de construcciones similares'),
         #  html.Hr(),

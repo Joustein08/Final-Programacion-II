@@ -53,6 +53,7 @@ arr_2 = rasterize([(geom, value) for geom, value in zip(buffered_gdf_2.geometry,
 # Guardar el arreglo como archivo raster
 with rasterio.open(raster2_path , 'w', driver='GTiff', width=width, height=height, count=1, dtype=arr_2.dtype, crs=gdf.crs, transform=rasterio.Affine(res, 0, bounds[0], 0, -res, bounds[3])) as dst:dst.write(arr_2, 1)
 
+
 def analisisConstrucciones(proximidadConstrucciones):
 
     # Definición de variables
@@ -120,7 +121,28 @@ def analisisConstrucciones(proximidadConstrucciones):
 
         # Codificación de la imagen
         construcciones_codificada = base64.b64encode(figuraConstrucciones.getvalue()).decode()
-    
+
+        # Leer la imagen generada como un objeto BytesIO
+        figura_bytes = io.BytesIO(base64.b64decode(construcciones_codificada))
+
+        # Abrir la imagen con matplotlib
+        imagen = plt.imread(figura_bytes)
+
+        # Calcular el histograma de colores de la imagen
+        histograma, bordes = np.histogram(imagen.reshape(-1, 3), bins=256, range=[0, 1])
+
+        # Encontrar el índice del color más predominante (bin con mayor frecuencia)
+        indice_color_predominante = np.argmax(histograma)
+
+        # Obtener el color más predominante
+        color_predominante = bordes[indice_color_predominante]
+
+        # Calcular el puntaje del color predominante como la frecuencia relativa
+        puntaje_color_predominante = histograma[indice_color_predominante] / np.sum(histograma)
+
+        # Imprimir el puntaje del color predominante
+        print("Puntaje del color predominante:", puntaje_color_predominante)
+        
     elif proximidadConstrucciones == "NO": 
 
         # Abrir los rasters de entrada
@@ -185,9 +207,27 @@ def analisisConstrucciones(proximidadConstrucciones):
 
         # Codificación de la imagen
         construcciones_codificada = base64.b64encode(figuraConstrucciones.getvalue()).decode()
-        
+
+        # Leer la imagen generada como un objeto BytesIO
+        figura_bytes = io.BytesIO(base64.b64decode(construcciones_codificada))
+
+        # Abrir la imagen con matplotlib
+        imagen = plt.imread(figura_bytes)
+
+        # Calcular el histograma de colores de la imagen
+        histograma, bordes = np.histogram(imagen.reshape(-1, 3), bins=256, range=[0, 1])
+
+        # Encontrar el índice del color más predominante (bin con mayor frecuencia)
+        indice_color_predominante = np.argmax(histograma)
+
+        # Calcular el puntaje del color predominante como la frecuencia relativa
+        puntaje_color_predominante = histograma[indice_color_predominante] / np.sum(histograma)
+
+        # Imprimir el puntaje del color predominante
+        print("Puntaje del color predominante:", puntaje_color_predominante)
     else:
         construcciones_codificada = print("")
-    
+        
     # Crear la figura HTML con Dash
     return construcciones_codificada
+

@@ -30,27 +30,6 @@ datos_a_analizar = dbc.Container(
              accept='.zip'
          ),
         html.Hr(),
-        html.Label('Cartografía'),
-        dcc.Upload(
-            id='upload-data',
-            children=html.Div([
-                'Arrastre y suelte el archivo o ',
-                html.A('Seleccione el archivo')
-            ]),
-            style={
-                'width': '100%',
-                'height': '60px',
-                'lineHeight': '60px',
-                'borderWidth': '1px',
-                'borderStyle': 'dashed',
-                'borderRadius': '5px',
-                'textAlign': 'center',
-                'margin': '10px'
-             },
-             # Acepta archivos .zip
-             accept='.zip'
-         ),
-        html.Hr(),
         html.Label('Construcciones similares'),
         dcc.Upload(
             id='upload-data',
