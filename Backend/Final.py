@@ -61,7 +61,7 @@ colors = ['red', 'yellow', 'green']
 cmap = ListedColormap(colors)
 
 # Crear la figura y los ejes
-fig, ax = plt.subplots(figsize = (6,6))
+fig, ax = plt.subplots(figsize = (6,9.1))
 
 # Mostrar el raster en los ejes utilizando la escala de colores personalizada
 im = ax.imshow(raster, cmap=cmap, vmin=vmin, vmax=vmax)
