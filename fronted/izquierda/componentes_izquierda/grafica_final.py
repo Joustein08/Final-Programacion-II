@@ -4,10 +4,8 @@ import dash_bootstrap_components as dbc
 grafica_final = dbc.Container(
     [
         html.H2('GRÁFICA FINAL'),
-        html.Hr(),
-        html.Img(src='fronted/derecha/componentes_derecha/Ubicacion.png', style={'width': '500px', 'height': '300px'}),
-        html.Hr(),
-        dbc.Button('Generar', color="dark", className="btn-lg"),
-        html.Hr(),
+        html.Br(),
+        dbc.Button("Mostrar Análisis Final", id="boton-mostrar-final", color="primary", className="mr-2"),
+        html.Div(id="salidaGraficaFinal"),
     ]
 )

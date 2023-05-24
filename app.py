@@ -1,10 +1,8 @@
+# Importación de las librerias
 import dash
 from dash import html
 import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output, State
-from werkzeug.serving import make_server
-import threading
-import signal
 
 #IMPORTAR FRONTED
 from fronted.navegador.navegador import navegador
@@ -15,9 +13,13 @@ from fronted.izquierda.izquierda import izquierda
 from Backend.Construcciones import *
 from Backend.Drenaje_Doble import *
 from Backend.Poblacion import *
+from Backend.Vias import *
+from Backend.Final import Final_codificada
 
+# Creación de la aplicación Dash
 app = dash.Dash(__name__,external_stylesheets=[dbc.themes.BOOTSTRAP])
 
+# Definición del diseño de la aplicación
 app.layout = dbc.Container(
     [
         dbc.Row(
@@ -30,36 +32,55 @@ app.layout = dbc.Container(
     ]
 )
 
-
+# Callback para la función de análisis de construcciones similares
 @app.callback(
     Output('salidaConstrucciones', 'children'),
     Input('proximidadConstrucciones', 'value')
 )
+
+# Definición de la función de análisis de construcciones similares, la cual muestra la imagen final de dicho análisis
 def construcciones(proximidadConstrucciones):
     construcciones_codificada = analisisConstrucciones(proximidadConstrucciones)
     imagenConstrucciones = html.Img(src="data:image/png;base64,{}".format(construcciones_codificada))
     return html.Div([imagenConstrucciones])
 
+# Callback para la función de análisis de rios
 @app.callback(
     Output('salidaRios', 'children'),
     Input('proximidadRios', 'value')
 )
 
+# Definición de la función de análisis de rios, la cual muestra la imagen final de dicho análisis
 def Rios(proximidadRios):
     rios_codificada = analisisRios(proximidadRios)
     imagenRios = html.Img(src="data:image/png;base64,{}".format(rios_codificada))
     return html.Div([imagenRios])
 
+# Callback para la función de análisis de población
 @app.callback(
     Output('salidaPoblacion', 'children'),
     Input('proximidadPoblacion', 'value')
 )
 
+# Definición de la función de análisis de población, la cual muestra la imagen final de dicho análisis
 def Poblacion(proximidadPoblacion):
     Poblacion_codificada = analisisPoblacion(proximidadPoblacion)
     imagenPoblacion = html.Img(src="data:image/png;base64,{}".format(Poblacion_codificada))
     return html.Div([imagenPoblacion])
 
+# Callback para la función de análisis de vías
+@app.callback(
+    Output('salidaVias', 'children'),
+    Input('proximidadVias', 'value')
+)
+
+# Definición de la función de análisis de vías, la cual muestra la imagen final de dicho análisis
+def Vias(proximidadVias):
+    Vias_codificada = analisisVias(proximidadVias)
+    imagenVias = html.Img(src="data:image/png;base64,{}".format(Vias_codificada))
+    return html.Div([imagenVias])
+
+# Callback para actualizar la tabla
 @app.callback(
     Output('tabla', 'children'),
     Input('proximidadConstrucciones', 'value'),
@@ -67,6 +88,8 @@ def Poblacion(proximidadPoblacion):
     Input('proximidadPoblacion', 'value'),
     Input('proximidadVias', 'value')
 )
+
+# Definición de la función para mostrar la validación de selección de las opciones en la definición del proyecto
 def update_table(proximidad_construcciones, proximidad_rios, proximidad_poblacion, proximidad_vias):
     estilo_construcciones = {'background-color': 'green', 'fontWeight': 'bold', 'color': 'white', 'border': '1.75px solid black'}
     estilo_rios = {'background-color': 'green', 'fontWeight': 'bold', 'color': 'white', 'border': '1px solid black'}
@@ -82,18 +105,24 @@ def update_table(proximidad_construcciones, proximidad_rios, proximidad_poblacio
         ])
     ]
     return html.Table(filas)
+
+# Callback para mostrar las salidas de los análisis anteriores
 @app.callback(
     Output("salidas", "children"),
     Input("boton-mostrar-salidas", "n_clicks"),
     State('proximidadConstrucciones', 'value'),
     State('proximidadRios', 'value'),
-    State('proximidadPoblacion', 'value')
+    State('proximidadPoblacion', 'value'),
+    State('proximidadVias', 'value')
 )
-def mostrar_salidas(n_clicks, proximidad_construcciones, proximidad_rios, proximidad_poblacion):
+
+# Definición del funcionamiento del botón para mostrar las gráficas de cada análisis
+def mostrar_salidas(n_clicks, proximidad_construcciones, proximidad_rios, proximidad_poblacion,proximidad_Vias):
     if n_clicks:
         salida_construcciones = construcciones(proximidad_construcciones)
         salida_rios = Rios(proximidad_rios)
         salida_poblacion = Poblacion(proximidad_poblacion)
+        salida_vias = Vias(proximidad_Vias)
         return html.Div([html.Hr(),
                          html.Label('Análisis de construcciones similares'),
                          html.Hr(),
@@ -105,9 +134,42 @@ def mostrar_salidas(n_clicks, proximidad_construcciones, proximidad_rios, proxim
                          html.Hr(),
                          html.Label('Análisis de cercanía de población'),
                          html.Hr(),
-                         salida_poblacion])
+                         salida_poblacion,
+                         html.Hr(),
+                         html.Label('Análisis de cercanía de población'),
+                         html.Hr(),
+                         salida_vias])
     return html.Div()
 
+# Callback para mostrar la imagen final
+@app.callback(
+    Output('salidaFinal', 'children'),
+    Input('proximidadVias', 'value')
+)
+
+# Definición de la función para mostrar a imagen final
+def Final():
+    imagenFinal = html.Img(src="data:image/png;base64,{}".format(Final_codificada))
+    return html.Div([imagenFinal])
+
+
+# Callback para mostrar la gráfica final
+@app.callback(
+    Output("salidaGraficaFinal", "children"),
+    Input("boton-mostrar-final", "n_clicks")
+)
+
+# Definición del funcionamiento del botón para mostrar la gráfica final
+def mostrar_final(n_clicks):
+    if n_clicks:
+        salida_final= Final()
+        return html.Div([html.Hr(),
+                         salida_final,
+                         html.Hr(),])
+    return html.Div()
+
+
+# Iniciar el servidor Dash
 if __name__ == '__main__':
-    app.server.config['TIMEOUT'] = 60
+    app.server.config['TIMEOUT'] = 180
     app.run_server(debug=True) 
