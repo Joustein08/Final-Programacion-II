@@ -26,8 +26,8 @@ datos_a_analizar = dbc.Container(
                 'textAlign': 'center',
                 'margin': '10px'
              },
-             # Acepta archivos .zip
-             accept='.zip'
+             # Acepta archivos shp y raster
+             accept='.shp,.tif'
          ),
         html.Hr(),
         html.Label('Construcciones similares'),
@@ -47,8 +47,8 @@ datos_a_analizar = dbc.Container(
                 'textAlign': 'center',
                 'margin': '10px'
              },
-             # Acepta archivos .zip
-             accept='.zip'
+             # Acepta archivos shp y raster
+             accept='.shp,.tif'
          ),
         html.Hr(),
         html.Label('Fuentes Hídricas'),
@@ -68,8 +68,8 @@ datos_a_analizar = dbc.Container(
                 'textAlign': 'center',
                 'margin': '10px'
              },
-             # Acepta archivos .zip
-             accept='.zip'
+             # Acepta archivos shp y raster
+             accept='.shp,.tif'
          ),
         html.Hr(),
         html.Label('Vías de acceso'),
@@ -89,9 +89,10 @@ datos_a_analizar = dbc.Container(
                 'textAlign': 'center',
                 'margin': '10px'
              },
-             # Acepta archivos .zip
-             accept='.zip'
+             # Acepta archivos shp y raster
+             accept='.shp,.tif'
          ),
         html.Hr(),
     ]
 )
+

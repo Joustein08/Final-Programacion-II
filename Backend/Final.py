@@ -105,9 +105,3 @@ porcentaje_influencia3 = (histograma3[indice_color_predominante3] / np.sum(histo
 histograma4, bordes4 = np.histogram(raster4.flatten(), bins=256, range=[0, 255])
 indice_color_predominante4 = np.argmax(histograma4)
 porcentaje_influencia4 = (histograma4[indice_color_predominante4] / np.sum(histograma4)) * 100
-
-# Imprimir los porcentajes de influencia de cada archivo raster
-print("Porcentaje de influencia de raster1: {:.0f}%".format(porcentaje_influencia1))
-print(f"Porcentaje de influencia de raster2: {porcentaje_influencia2:.0f}%")
-print(f"Porcentaje de influencia de raster3: {porcentaje_influencia3:.0f}%")
-print(f"Porcentaje de influencia de raster4: {porcentaje_influencia4:.0f}%")
